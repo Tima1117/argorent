@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Unbounded, Manrope, Noto_Sans_Georgian } from "next/font/google";
+import { Inter_Tight, Manrope, Noto_Sans_Georgian } from "next/font/google";
 import "./globals.css";
 
-const display = Unbounded({ subsets: ["latin", "cyrillic"], weight: ["500", "700", "800"], variable: "--font-display", display: "swap" });
+const display = Inter_Tight({ subsets: ["latin", "cyrillic"], weight: ["600", "700", "800"], variable: "--font-display", display: "swap" });
 const body = Manrope({ subsets: ["latin", "cyrillic"], weight: ["400", "500", "600", "700", "800"], variable: "--font-body", display: "swap" });
 const georgian = Noto_Sans_Georgian({ subsets: ["georgian"], weight: ["400", "600", "800"], variable: "--font-georgian", display: "swap" });
 

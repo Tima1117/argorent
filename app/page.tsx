@@ -7,6 +7,7 @@ import Lenis from "lenis";
 import { fleet, classes, gallery, type Lang, type Text, type CarClass } from "./fleet-data";
 import { reviews } from "./reviews-data";
 import { ExpandHero } from "./hero-expand";
+import { WhySection, type WhyCopy } from "./why-section";
 
 const t = (en: string, ru: string, ka: string): Text => ({ en, ru, ka });
 
@@ -36,10 +37,15 @@ const copy = {
     book: "Book",
     details: "Photo",
     fleetNote: "Prices are indicative and depend on season and rental length — the final price is confirmed in chat.",
-    whyEyebrow: "WHY ARGO RENT",
-    whyTitle: "Rented like from a friend",
-    why: [["Delivered to you", "We bring the car to your hotel, apartment or the airport — at 6 a.m. if needed — and pick it up where it suits you."], ["Ready for the mountains", "All-wheel drive, winter tyres in season, a full tank and a clean cabin. Water and wipes are on us."], ["No office visits", "The contract is signed on the spot in a few minutes; payment after you inspect the car."], ["Always in touch", "Quick answers on WhatsApp, tips on routes and a flexible attitude to small delays."]],
-    whyQuote: "guests on Google rate us 4.9 — read what they write about the cars, the delivery and the service.",
+    why: {
+      eyebrow: "WHY ARGO RENT", title: "Rented like from a friend",
+      route: { title: "Delivered where you are", text: "Airport at 6 a.m., hotel lobby or your apartment — we bring the car and pick it up where it suits you.", pins: ["Airport", "Hotel", "Mountains"] },
+      tank: { title: "Full tank, clean cabin", text: "Every car leaves washed, fuelled, with water and wipes inside." },
+      docs: { title: "Paperwork in 5 minutes", items: ["Photo of passport and licence", "Contract signed at handover", "Payment after you inspect the car"] },
+      chat: { title: "Always in touch", msgs: ["Can you deliver to the airport at 6 a.m.?", "Sure — the car will wait at arrivals, full tank.", "Perfect, see you!"] },
+      stats: [[4.9, "", "Google rating"], [128, "", "reviews"], [97, "%", "five-star reviews"]],
+      cta: { title: "Ready to go?", text: "Tell us the dates and where to bring the car — we answer within minutes.", btn: "Write on WhatsApp", href: "https://wa.me/995551080184" },
+    } as WhyCopy,
     revEyebrow: "REVIEWS",
     revTitle: "What guests say",
     revLede: "Real reviews from Google Maps.",
@@ -82,10 +88,15 @@ const copy = {
     book: "Забронировать",
     details: "Фото",
     fleetNote: "Цены ориентировочные и зависят от сезона и срока аренды — итоговую стоимость подтверждаем в чате.",
-    whyEyebrow: "ПОЧЕМУ ARGO RENT",
-    whyTitle: "Как у друга взять",
-    why: [["Привезём сами", "Подаём машину в отель, квартиру или аэропорт — хоть в 6 утра — и забираем там, где вам удобно."], ["Готова к горам", "Полный привод, зимняя резина в сезон, полный бак и чистый салон. Вода и салфетки — от нас."], ["Без офиса", "Договор подписываем на месте за несколько минут, оплата после осмотра машины."], ["Всегда на связи", "Быстрые ответы в WhatsApp, советы по маршрутам и спокойное отношение к небольшим задержкам."]],
-    whyQuote: "ставят нам гости в Google — почитайте, что они пишут про машины, доставку и сервис.",
+    why: {
+      eyebrow: "ПОЧЕМУ ARGO RENT", title: "Как у друга взять",
+      route: { title: "Привезём туда, где вы", text: "Аэропорт в 6 утра, лобби отеля или ваша квартира — подаём машину и забираем там, где удобно вам.", pins: ["Аэропорт", "Отель", "Горы"] },
+      tank: { title: "Полный бак, чистый салон", text: "Каждая машина выезжает вымытой и заправленной, с водой и салфетками внутри." },
+      docs: { title: "Оформление за 5 минут", items: ["Фото паспорта и прав", "Договор подписываем при передаче", "Оплата после осмотра машины"] },
+      chat: { title: "Всегда на связи", msgs: ["Сможете подать в аэропорт в 6 утра?", "Конечно — машина будет ждать на выходе, с полным баком.", "Отлично, до встречи!"] },
+      stats: [[4.9, "", "рейтинг Google"], [128, "", "отзывов"], [97, "%", "отзывов на 5 звёзд"]],
+      cta: { title: "Едем?", text: "Напишите даты и куда подать машину — отвечаем в течение нескольких минут.", btn: "Написать в WhatsApp", href: "https://wa.me/995551080184" },
+    } as WhyCopy,
     revEyebrow: "ОТЗЫВЫ",
     revTitle: "Что говорят гости",
     revLede: "Настоящие отзывы с Google Maps.",
@@ -128,10 +139,15 @@ const copy = {
     book: "დაჯავშნა",
     details: "ფოტო",
     fleetNote: "ფასები სავარაუდოა და დამოკიდებულია სეზონსა და ვადაზე — საბოლოო ფასს ჩატში ვადასტურებთ.",
-    whyEyebrow: "რატომ ARGO RENT",
-    whyTitle: "როგორც მეგობრისგან",
-    why: [["მოგიტანთ ადგილზე", "მანქანას მოგიყვანთ სასტუმროში, ბინაში ან აეროპორტში — თუნდაც დილის 6-ზე — და წავიყვანთ იქიდან, სადაც გიხერხდებათ."], ["მზადაა მთებისთვის", "სრული წამყვანი, ზამთრის საბურავები სეზონზე, სავსე ავზი და სუფთა სალონი. წყალი და ხელსახოცები ჩვენგან."], ["ოფისში სიარულის გარეშე", "ხელშეკრულებას ადგილზე რამდენიმე წუთში ვაფორმებთ, გადახდა მანქანის დათვალიერების შემდეგ."], ["ყოველთვის კავშირზე", "სწრაფი პასუხები WhatsApp-ზე, რჩევები მარშრუტებზე და მოქნილი დამოკიდებულება მცირე დაგვიანებისადმი."]],
-    whyQuote: "გვაფასებენ სტუმრები Google-ზე — წაიკითხეთ, რას წერენ მანქანებზე, მიწოდებასა და სერვისზე.",
+    why: {
+      eyebrow: "რატომ ARGO RENT", title: "როგორც მეგობრისგან",
+      route: { title: "მოგიტანთ იქ, სადაც ხართ", text: "აეროპორტი დილის 6-ზე, სასტუმროს ლობი ან თქვენი ბინა — მანქანას მოგიყვანთ და წავიყვანთ იქიდან, სადაც გიხერხდებათ.", pins: ["აეროპორტი", "სასტუმრო", "მთები"] },
+      tank: { title: "სავსე ავზი, სუფთა სალონი", text: "ყველა მანქანა გადის გარეცხილი და გავსებული, წყლითა და ხელსახოცებით სალონში." },
+      docs: { title: "გაფორმება 5 წუთში", items: ["პასპორტისა და მართვის მოწმობის ფოტო", "ხელშეკრულებას ვაფორმებთ გადაცემისას", "გადახდა მანქანის დათვალიერების შემდეგ"] },
+      chat: { title: "ყოველთვის კავშირზე", msgs: ["შეძლებთ აეროპორტში დილის 6-ზე მოყვანას?", "რა თქმა უნდა — მანქანა გასასვლელთან დაგხვდებათ, სავსე ავზით.", "შესანიშნავია, შევხვდებით!"] },
+      stats: [[4.9, "", "Google რეიტინგი"], [128, "", "შეფასება"], [97, "%", "ხუთვარსკვლავიანი შეფასება"]],
+      cta: { title: "წავედით?", text: "მოგვწერეთ თარიღები და სად მოგიყვანოთ მანქანა — რამდენიმე წუთში გპასუხობთ.", btn: "მოწერა WhatsApp-ზე", href: "https://wa.me/995551080184" },
+    } as WhyCopy,
     revEyebrow: "შეფასებები",
     revTitle: "რას ამბობენ სტუმრები",
     revLede: "ნამდვილი შეფასებები Google Maps-დან.",
@@ -341,8 +357,7 @@ export default function Home() {
   }, [lightbox]);
 
   const facts = c.facts;
-  const factIcons = [Ico.car, Ico.fuel, Ico.doc, Ico.clock];
-  const whyIcons = [Ico.pin, Ico.car, Ico.doc, Ico.phone];
+  const factPhotos = ["/images/g-cherokee.webp", "/images/g-dash.webp", "/images/g-handover.webp", "/images/g-night.webp"];
 
   return (
     <>
@@ -376,29 +391,20 @@ export default function Home() {
         />
 
         <div className="strip">
-          <div className="container strip-inner">
-            {facts.map(([b, s], i) => <div key={b} className="strip-item"><span className="strip-ico">{factIcons[i]}</span><div><b>{b}</b><span>{s}</span></div></div>)}
+          <div className="container strip-grid">
+            {facts.map(([b, sub], i) => (
+              <motion.div key={b} className="fact" initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-10% 0px" }} transition={{ duration: 0.5, delay: i * 0.08 }}>
+                <Image src={factPhotos[i]} alt="" fill sizes="(max-width: 760px) 50vw, 25vw" style={{ objectFit: "cover" }} />
+                <div className="fact-shade" />
+                <div className="fact-text"><b>{b}</b><span>{sub}</span></div>
+              </motion.div>
+            ))}
           </div>
         </div>
 
         <Fleet lang={lang} c={c} onPhoto={setLightbox} />
 
-        <section className="why" id="why">
-          <div className="container">
-            <div className="section-head">
-              <div><p className="eyebrow light">{c.whyEyebrow}</p><h2 className="section-title light">{c.whyTitle}</h2></div>
-            </div>
-            <div className="why-grid">
-              {c.why.map(([h, p], i) => (
-                <motion.div key={h} className="why-card" initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-40px" }} transition={{ duration: 0.4, delay: i * 0.07 }}>
-                  <div className="why-ico">{whyIcons[i]}</div>
-                  <h3>{h}</h3><p>{p}</p>
-                </motion.div>
-              ))}
-            </div>
-            <div className="why-quote"><b>4.9</b><p>{c.whyQuote}</p></div>
-          </div>
-        </section>
+        <WhySection c={c.why} />
 
         <Reviews lang={lang} c={c} />
         <Gallery lang={lang} c={c} onPhoto={setLightbox} />
